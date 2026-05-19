@@ -3,9 +3,9 @@
 USE db52885;
 GO
 
---------------------------------------------------------------------------------
+
 -- User roles
---------------------------------------------------------------------------------
+
 
 CREATE TABLE [User] (
     Id              INT IDENTITY(1,1) PRIMARY KEY,
@@ -22,7 +22,7 @@ CREATE TABLE [User] (
 );
 GO
 
---------------------------------------------------------------------------------
+
 
 CREATE TABLE RefreshToken (
     Id          INT IDENTITY(1,1) PRIMARY KEY,
@@ -33,7 +33,7 @@ CREATE TABLE RefreshToken (
 );
 GO
 
---------------------------------------------------------------------------------
+
 
 CREATE TABLE Customer (
     Id          INT IDENTITY(1,1) PRIMARY KEY,
@@ -46,7 +46,7 @@ CREATE TABLE Customer (
 );
 GO
 
---------------------------------------------------------------------------------
+
 
 CREATE TABLE Vehicle (
     Id              INT IDENTITY(1,1) PRIMARY KEY,
@@ -65,7 +65,7 @@ GO
 
 
 
---------------------------------------------------------------------------------
+
 
 CREATE TABLE Employee (
     Id                  INT IDENTITY(1,1) PRIMARY KEY,
@@ -81,7 +81,7 @@ CREATE TABLE Employee (
 );
 GO
 
---------------------------------------------------------------------------------
+
 
 CREATE TABLE EmployeeSalaryHistory (
     Id              INT IDENTITY(1,1) PRIMARY KEY,
@@ -93,7 +93,7 @@ CREATE TABLE EmployeeSalaryHistory (
 );
 GO
 
---------------------------------------------------------------------------------
+
 
 CREATE TABLE Appointment (
     Id              INT IDENTITY(1,1) PRIMARY KEY,
@@ -105,7 +105,7 @@ CREATE TABLE Appointment (
 );
 GO
 
---------------------------------------------------------------------------------
+
 
 CREATE TABLE WorkOrder (
     Id          INT IDENTITY(1,1) PRIMARY KEY,
@@ -120,7 +120,7 @@ CREATE TABLE WorkOrder (
 );
 GO
 
---------------------------------------------------------------------------------
+
 
 CREATE TABLE WorkOrderEmployee (
     WorkOrderId  INT NOT NULL FOREIGN KEY REFERENCES WorkOrder(Id),
@@ -131,7 +131,7 @@ CREATE TABLE WorkOrderEmployee (
 );
 GO
 
---------------------------------------------------------------------------------
+
 
 CREATE TABLE RepairTask (
     Id                  INT IDENTITY(1,1) PRIMARY KEY,
@@ -145,7 +145,7 @@ CREATE TABLE RepairTask (
 );
 GO
 
---------------------------------------------------------------------------------
+
 
 CREATE TABLE Part (
     Id              INT IDENTITY(1,1) PRIMARY KEY,
@@ -162,7 +162,7 @@ CREATE TABLE Part (
 );
 GO
 
---------------------------------------------------------------------------------
+
 
 CREATE TABLE PartPriceHistory (
     Id              INT IDENTITY(1,1) PRIMARY KEY,
@@ -174,7 +174,7 @@ CREATE TABLE PartPriceHistory (
 );
 GO
 
---------------------------------------------------------------------------------
+
 
 CREATE TABLE RepairTaskPart (
     RepairTaskId  INT NOT NULL FOREIGN KEY REFERENCES RepairTask(Id),
@@ -183,7 +183,7 @@ CREATE TABLE RepairTaskPart (
 );
 GO
 
---------------------------------------------------------------------------------
+
 
 CREATE TABLE WorkOrderRepairTask (
     WorkOrderId      INT NOT NULL FOREIGN KEY REFERENCES WorkOrder(Id),
@@ -195,7 +195,7 @@ CREATE TABLE WorkOrderRepairTask (
 );
 GO
 
---------------------------------------------------------------------------------
+
 
 CREATE TABLE WorkOrderPart (
     Id                INT IDENTITY(1,1) PRIMARY KEY,
@@ -207,7 +207,7 @@ CREATE TABLE WorkOrderPart (
 );
 GO
 
---------------------------------------------------------------------------------
+
 
 CREATE TABLE Invoice (
     Id              INT IDENTITY(1,1) PRIMARY KEY,
@@ -225,9 +225,9 @@ CREATE TABLE Invoice (
 );
 GO
 
---------------------------------------------------------------------------------
+
 -- TRIGGERS FOR UPDATED_AT
---------------------------------------------------------------------------------
+
 
 -- Trigger for User table
 CREATE TRIGGER trg_User_UpdatedAt

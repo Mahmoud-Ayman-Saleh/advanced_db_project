@@ -2,17 +2,7 @@
 USE db52885;
 GO
 
---------------------------------------------------------------------------------
--- IMPORTANT:
--- Run these queries BEFORE creating indexes
--- Then run them again AFTER creating indexes
---
--- Compare:
--- 1) Execution Plan
--- 2) Logical Reads
--- 3) CPU Time
--- 4) Elapsed Time
---------------------------------------------------------------------------------
+
 
 SET STATISTICS IO ON;
 SET STATISTICS TIME ON;

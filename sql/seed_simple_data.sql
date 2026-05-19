@@ -5,9 +5,9 @@ SET NOCOUNT ON;
 SET XACT_ABORT ON;
 GO
 
---------------------------------------------------------------------------------
+
 -- CONFIG
---------------------------------------------------------------------------------
+
 
 DECLARE @AppointmentsCount INT = 50000;
 DECLARE @WorkOrdersCount  INT = 300000;
@@ -17,9 +17,9 @@ DECLARE @EmployeeCount    INT = (SELECT COUNT(*) FROM Employee);
 DECLARE @RepairTaskCount  INT = (SELECT COUNT(*) FROM RepairTask);
 DECLARE @PartCount        INT = (SELECT COUNT(*) FROM Part);
 
---------------------------------------------------------------------------------
+
 -- NUMBERS TABLE
---------------------------------------------------------------------------------
+
 
 IF OBJECT_ID('tempdb..#Numbers') IS NOT NULL
     DROP TABLE #Numbers;
@@ -37,9 +37,9 @@ FROM Numbers;
 
 CREATE CLUSTERED INDEX IX_Numbers_n ON #Numbers(n);
 
---------------------------------------------------------------------------------
+
 -- APPOINTMENTS
---------------------------------------------------------------------------------
+
 
 INSERT INTO Appointment
 (
@@ -61,9 +61,9 @@ SELECT
 FROM #Numbers
 WHERE n <= @AppointmentsCount;
 
---------------------------------------------------------------------------------
+
 -- WORK ORDERS
---------------------------------------------------------------------------------
+
 
 INSERT INTO WorkOrder
 (
@@ -92,9 +92,9 @@ SELECT
     END
 FROM #Numbers;
 
---------------------------------------------------------------------------------
+
 -- WORK ORDER EMPLOYEES
---------------------------------------------------------------------------------
+
 
 INSERT INTO WorkOrderEmployee
 (
@@ -131,9 +131,9 @@ SELECT
 FROM WorkOrder wo
 WHERE wo.Id % 2 = 0;
 
---------------------------------------------------------------------------------
+
 -- WORK ORDER REPAIR TASKS
---------------------------------------------------------------------------------
+
 
 INSERT INTO WorkOrderRepairTask
 (
@@ -176,9 +176,9 @@ SELECT
 FROM WorkOrder wo
 WHERE wo.Id % 2 = 0;
 
---------------------------------------------------------------------------------
+
 -- WORK ORDER PARTS
---------------------------------------------------------------------------------
+
 
 INSERT INTO WorkOrderPart
 (
@@ -233,9 +233,9 @@ SELECT
 FROM WorkOrder wo
 WHERE wo.Id % 3 = 0;
 
---------------------------------------------------------------------------------
+
 -- INVOICES
---------------------------------------------------------------------------------
+
 
 INSERT INTO Invoice
 (
