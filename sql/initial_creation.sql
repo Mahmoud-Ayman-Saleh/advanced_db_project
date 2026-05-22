@@ -326,3 +326,47 @@ BEGIN
     INNER JOIN inserted i ON p.Id = i.Id;
 END;
 GO
+
+
+
+--- create table for logging
+
+CREATE TABLE AuditLog
+(
+    Id INT IDENTITY PRIMARY KEY,
+    ActionType NVARCHAR(50),
+    TableName NVARCHAR(100),
+    OldValue NVARCHAR(MAX),
+    NewValue NVARCHAR(MAX),
+    CreatedAt DATETIME DEFAULT GETDATE()
+);
+GO
+
+--- create a trigger to register the logs
+CREATE TRIGGER trg_UserAudit
+ON [User]
+AFTER UPDATE
+AS
+BEGIN
+
+    INSERT INTO AuditLog
+    (
+        ActionType,
+        TableName,
+        OldValue,
+        NewValue
+    )
+    SELECT
+        'UPDATE',
+        'User',
+        d.Email,
+        i.Email
+    FROM deleted d
+    INNER JOIN inserted i
+        ON d.Id = i.Id;
+
+END;
+GO
+
+
+
